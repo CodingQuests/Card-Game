@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://085m0pgrbo2t"]
+
+[ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/card.tscn" id="1_imruo"]
+[ext_resource type="Script" path="res://Scripts/CardContainer.gd" id="1_xeshw"]
+[ext_resource type="Script" path="res://Scripts/CardPlacement.gd" id="3_yxjxn"]
+
+[node name="Board" type="Node"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CardContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 530.0
+offset_bottom = -512.0
+grow_vertical = 2
+theme_override_constants/separation = -20
+alignment = 1
+script = ExtResource("1_xeshw")
+
+[node name="Card1" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="Card2" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="Card3" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="Card4" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="Card5" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="Card6" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+layout_mode = 2
+
+[node name="CardPlacement" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 384.0
+offset_top = 177.0
+offset_right = 768.0
+offset_bottom = 412.0
+script = ExtResource("3_yxjxn")
+
+[node name="CardHolder" type="Node" parent="."]
+
+[connection signal="mouse_entered" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_exited"]
